@@ -2,7 +2,7 @@ import { html, useState } from 'https://unpkg.com/htm/preact/standalone.module.j
 import { Card } from '/app/components/card.js'
 import { Form } from '/app/states/form.js'
 
-export const Cards = ({formHeader, onCreate}) => {
+export const Cards = () => {
     const [userCards, setUserCards] = useState([
         {id: 1, name: "John Dow", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."},
         {id: 2, name: "Boris Johnson", description: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. "},
@@ -17,22 +17,30 @@ export const Cards = ({formHeader, onCreate}) => {
         }]))
     }
 
-    function onRemove(id) {
-        return
+    function removeUserCard(id) {
+        setUserCards(userCards.filter(card => card.id !== id))
     }
 
-    function onEdit(id) {
-        return
+    function editUserCard(id, newName, newDescription) {
+        setUserCards(
+            userCards.map(card => {
+                if (card.id === id) {
+                    card.name = newName
+                    card.description = newDescription
+                }
+                return card
+            })
+        )
     }
 
     return html`
             <article class="user-card-wrapper">
             ${userCards.length ? userCards.map((userCard) => {
                 return (html`
-                <${Card} userCard=${userCard} onRemove=${onRemove} onEdit=${onEdit} />
+                <${Card} userCard=${userCard} onRemove=${removeUserCard} onEdit=${editUserCard} />
                 `)
-            }) : html`<p>Нет карточек для отображения...</p>`}
+            }) : html`<p class="light">Has no items to display here...</p>`}
             </article>
-            <${Form} onCreate=${addUserCard} formHeader=${formHeader}/>
+            <${Form} onCreate=${addUserCard}/>
         `
 }

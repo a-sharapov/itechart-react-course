@@ -6,7 +6,7 @@ import { Cards } from '/app/states/cards.js'
 const App = ({page}) => {
     return html`
         <${Header} content="iTechArt-React-Course" />
-        <${Cards} formHeader="Create new card" />
+        <${Cards} />
         <${Footer} content="iTechArt" />
     `
 }

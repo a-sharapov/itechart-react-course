@@ -25,8 +25,8 @@ export const Form = ({formHeader, onCreate}) => {
     return html`
         <div class="form-wrapper" data-visibility=${expanded.toString()}>
             <span class="button form-caller" onClick=${() => expandHandler(expanded.toString())}>Append new user-card</span>
-            <form id="form" onSubmit=${submitHandler}>
-                <h3>${formHeader}</h3>
+            <form id="form" method="PUT" onSubmit=${submitHandler}>
+                <h3>Create new card</h3>
                 <p>If you are sure to make changes - please click to <b>Submit</b> button</p>
                 <hr />
                 <label data-width="full">

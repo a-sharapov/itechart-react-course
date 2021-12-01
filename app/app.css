@@ -24,6 +24,7 @@ body {
   display: block;
   width: 100%;
   text-align: center;
+  text-shadow: 0 1px 0 #fff;
 }
 
 body * {
@@ -409,6 +410,7 @@ section.user-card {
   box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
   overflow: hidden;
   transition: all .2s linear;
+  border-top: 5px solid #673ab8;
 }
 
 article.user-card-wrapper:hover section.user-card {
@@ -428,17 +430,30 @@ section.user-card .user-name-wrapper {
   color: #fff;
   padding: 20px;
   height: 100px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+
+section.user-card:nth-child(2n) {
+  border-top-color: #3a7fb8;
 }
 
 section.user-card:nth-child(2n) .user-name-wrapper {
   background: #3a7fb8;
 }
 
+section.user-card:nth-child(3n) {
+  border-top-color: #b83a7f;
+}
+
 section.user-card:nth-child(3n) .user-name-wrapper {
   background: #b83a7f;
 }
 
-section.user-card:nth-child(3n) .user-name-wrapper {
+section.user-card:nth-child(4n) {
+  border-top-color: #b8903a;
+}
+
+section.user-card:nth-child(4n) .user-name-wrapper {
   background: #b8903a;
 }
 
@@ -521,6 +536,45 @@ section.user-card .modifier:hover {
   opacity: 1;
 }
 
+section.user-card[data-edited="displayed"] {
+
+}
+
+section.user-card[data-edited="edited"] {
+  
+}
+
+section.user-card form,
+section.user-card .content-wrapper {
+  position: relative;
+  transition: all .2s linear;
+  overflow: hidden;
+  margin: 0;
+}
+
+section.user-card[data-edited="edited"] .content-wrapper,
+section.user-card[data-edited="displayed"] form {
+  position: absolute;
+  bottom: 0;
+  max-height: 0;
+  height: 0;
+}
+
+section.user-card[data-edited="displayed"] .content-wrapper,
+section.user-card[data-edited="edited"] form {
+  box-sizing: border-box;
+  height: auto;
+}
+
+section.user-card[data-edited="displayed"] form {
+  padding: 0 20px;
+}
+
+section.user-card[data-edited="edited"] form {
+  padding: 20px;
+  font-size: 14px;
+}
+
 .form-wrapper[data-visibility="button"] {
 }
 
@@ -572,6 +626,10 @@ section.user-card .modifier:hover {
 
 label[data-width="full"] input {
   width: 100%;
+}
+
+p.light {
+  color: #ccc;
 }
 
 footer {
