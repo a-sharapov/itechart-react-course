@@ -367,6 +367,82 @@ textarea {
   resize: none
 }
 
-main {
+main#app {
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  margin: 10% 0 0;
+}
+
+main#app h1.page-header {
+    display: inline-block;
+    color: #673ab8;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    background: #eee;
+    padding: 10px 15px;
+    border-radius: 2px;
+}
+
+article.user-card-wrapper {
+}
+
+section.user-card {
+    display: inline-block;
+    vertical-align: top;
+    width: 280px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 0 30px;
+    text-align: left;
+    background: #fff;
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+section.user-card .user-name-wrapper {
+    position: relative;
+    background: #673ab8;
+    color: #fff;
+    padding: 20px;
+    height: 100px;
+}
+
+section.user-card:nth-child(2n) .user-name-wrapper {
+    background: #3a7fb8;
+}
+
+section.user-card:nth-child(3n) .user-name-wrapper {
+    background: #b83a7f;
+}
+
+section.user-card:nth-child(3n) .user-name-wrapper {
+    background: #b8903a;
+}
+
+section.user-card .user-name-wrapper h3 {
+    position: absolute;
+    bottom: 10px;
+    margin: 0;
+    font-size: 18px;
+}
+
+section.user-card .user-description-wrapper {
+    position: relative;
+    padding: 20px;
+    height: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+section.user-card .user-description-wrapper:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top, #fff, #fff 25%, transparent);
+    z-index: 5;
 }
