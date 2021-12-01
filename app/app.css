@@ -371,8 +371,9 @@ main#app {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  padding: 0;
-  margin: 10% 0 0;
+  height: 100vh;
+  padding: 10% 0 0;
+  margin: 0;
 }
 
 main#app h1.page-header {
@@ -445,4 +446,13 @@ section.user-card .user-description-wrapper:after {
     height: 40px;
     background: linear-gradient(to top, #fff, #fff 25%, transparent);
     z-index: 5;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 11px;
+    color: #ddd;
+    text-align: center;
 }
