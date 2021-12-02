@@ -1,31 +1,34 @@
-import { html, useState } from 'https://unpkg.com/htm/preact/standalone.module.js';
+import {
+  html,
+  useState
+} from 'https://unpkg.com/htm/preact/standalone.module.js'
 
 
-export const Form = ({formHeader, onCreate}) => {
-    const [name, setName] = useState("")
-    const [description, setDescription] = useState("")
-    const [expanded, setExpanded] = useState("button")
+export const Form = ({onCreate}) => {
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
+  const [expanded, setExpanded] = useState("button")
 
-    function expandHandler(currentState) {
-        if (currentState === "button") {
-            setExpanded("form")
-        } else {
-            setExpanded("button")
-        }
+  const expandHandler = (currentState) => {
+    if (currentState === "button") {
+      setExpanded("form")
+    } else {
+      setExpanded("button")
     }
+  }
 
-    function submitHandler(event) {
-        event.preventDefault()
-        onCreate(name, description)
-        setName("")
-        setDescription("")
-        setExpanded("button")
-    }
+  const submitHandler = (event) => {
+    event.preventDefault()
+    onCreate(name, description)
+    setName("")
+    setDescription("")
+    setExpanded("button")
+  }
 
-    return html`
+  return html `
         <div class="form-wrapper" data-visibility=${expanded.toString()}>
             <span class="button form-caller" onClick=${() => expandHandler(expanded.toString())}>Append new user-card</span>
-            <form id="form" method="PUT" onSubmit=${submitHandler}>
+            <form id="form" method="PUT" onSubmit=${(event) => submitHandler(event)}>
                 <h3>Create new card</h3>
                 <p>If you are sure to make changes - please click to <b>Submit</b> button</p>
                 <hr />

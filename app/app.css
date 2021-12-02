@@ -372,12 +372,25 @@ textarea {
   resize: none
 }
 
+.button.dedicated,
+button.dedicated,
+input[type=button].dedicated,
+input[type=reset].dedicated,
+input[type=submit].dedicated {
+  background: #4caf50;
+  background: linear-gradient(to top, #4caf50, #5bcf5f);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.4);
+  border-bottom-color: #2d702f;
+  border-top-color: #76f07a;
+}
+
 main#app {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  padding: 10% 0 0;
+  padding: 5% 0;
   margin: 0;
 }
 
@@ -394,6 +407,7 @@ main#app h1.page-header {
 article.user-card-wrapper {
   width: fit-content;
   margin: 0 auto;
+  max-width: 1400px;
 }
 
 section.user-card {
@@ -414,8 +428,9 @@ section.user-card {
 }
 
 article.user-card-wrapper:hover section.user-card {
-  filter: blur(1px);
-  transform: scale(.95);
+  filter: blur(.1px);
+  transform: scale(.97);
+  opacity: .9;
 }
 
 article.user-card-wrapper:hover section.user-card:hover {
@@ -536,14 +551,6 @@ section.user-card .modifier:hover {
   opacity: 1;
 }
 
-section.user-card[data-edited="displayed"] {
-
-}
-
-section.user-card[data-edited="edited"] {
-  
-}
-
 section.user-card form,
 section.user-card .content-wrapper {
   position: relative;
@@ -592,6 +599,9 @@ section.user-card[data-edited="edited"] form {
 .form-wrapper[data-visibility="button"] .button.form-caller {
   border-radius: 40px;
   cursor: default;
+  padding: 0 20px !important;
+  line-height: 45px;
+  height: 50px;
 }
 
 .form-wrapper[data-visibility="form"] {
@@ -602,10 +612,10 @@ section.user-card[data-edited="edited"] form {
   left: 50%;
   width: 300px;
   margin: 0 -150px;
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.85);
   backdrop-filter: blur(5px);
   border: 1px solid #eee;
-  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+  box-shadow: 0 5px 25px rgba(0,0,0,.25);
   text-align: left;
   z-index: 99;
 }
