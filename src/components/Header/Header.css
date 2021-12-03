@@ -1,0 +1,9 @@
+main#app h1.page-header {
+  display: inline-block;
+  color: #673ab8;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 2px;
+}

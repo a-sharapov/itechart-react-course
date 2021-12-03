@@ -1,0 +1,18 @@
+main#app h1.not-found-header {
+  display: inline-block;
+  font-size: 44px;
+  line-height: 30px;
+  color: #673ab8;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 2px;
+}
+
+main#app h1.not-found-header + hr {
+  display: block;
+  width: 50px;
+  margin: 0 auto 30px;
+  border: none;
+  background: #673ab8;
+  height: 5px;
+}

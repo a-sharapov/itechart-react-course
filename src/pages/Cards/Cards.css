@@ -1,0 +1,20 @@
+article.user-card-wrapper {
+  width: fit-content;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.link-to-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  padding: 0 20px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
+  background: rgba(255,255,255,.7)
+}

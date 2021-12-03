@@ -1,0 +1,171 @@
+section.user-card {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 280px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 10px;
+  text-align: left;
+  background: #fff;
+  border-bottom: 2px solid #eee;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
+  overflow: hidden;
+  transition: all .2s linear;
+  border-top: 5px solid #673ab8;
+}
+
+article.user-card-wrapper:hover section.user-card {
+  filter: blur(.1px);
+  transform: scale(.97);
+  opacity: .9;
+}
+
+article.user-card-wrapper:hover section.user-card:hover {
+  filter: blur(0);
+  transform: scale(1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+}
+
+section.user-card .user-name-wrapper {
+  position: relative;
+  background: #673ab8;
+  color: #fff;
+  padding: 20px;
+  height: 100px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+
+section.user-card:nth-child(2n) {
+  border-top-color: #3a7fb8;
+}
+
+section.user-card:nth-child(2n) .user-name-wrapper {
+  background: #3a7fb8;
+}
+
+section.user-card:nth-child(3n) {
+  border-top-color: #b83a7f;
+}
+
+section.user-card:nth-child(3n) .user-name-wrapper {
+  background: #b83a7f;
+}
+
+section.user-card:nth-child(4n) {
+  border-top-color: #b8903a;
+}
+
+section.user-card:nth-child(4n) .user-name-wrapper {
+  background: #b8903a;
+}
+
+section.user-card .user-name-wrapper h3 {
+  position: absolute;
+  bottom: 10px;
+  margin: 0;
+  font-size: 18px;
+}
+
+section.user-card .user-description-wrapper {
+  position: relative;
+  padding: 20px;
+  height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+section.user-card .user-description-wrapper:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, #fff, #fff 25%, transparent);
+  z-index: 5;
+}
+
+section.user-card .modifier {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,.7);
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  z-index: 2;
+  border-radius: 4px;
+  top: -70%;
+  opacity: 0;
+  transition: all .2s linear;
+}
+
+section.user-card .modifier+.modifier {
+  right: 60px;
+  transition: all .3s linear;
+}
+
+section.user-card .modifier[data-modify="remove"]:before,
+section.user-card .modifier[data-modify="edit"]:before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+section.user-card .modifier[data-modify="remove"]:before {
+  background: url(/i/remove.svg) no-repeat center center;
+  background-size: 50%;
+}
+
+section.user-card .modifier[data-modify="edit"]:before {
+  background: url(/i/edit.svg) no-repeat center center;
+  background-size: 50%;
+}
+
+section.user-card .modifier[data-modify="remove"]:active:before,
+section.user-card .modifier[data-modify="edit"]:active:before {
+  background-size: 60%;
+}
+
+section.user-card:hover .modifier {
+  top: 10px;
+  opacity: .8;
+}
+
+section.user-card .modifier:hover {
+  opacity: 1;
+}
+
+section.user-card form,
+section.user-card .content-wrapper {
+  position: relative;
+  transition: all .2s linear;
+  overflow: hidden;
+  margin: 0;
+}
+
+section.user-card[data-edited="edited"] .content-wrapper,
+section.user-card[data-edited="displayed"] form {
+  position: absolute;
+  bottom: 0;
+  max-height: 0;
+  height: 0;
+}
+
+section.user-card[data-edited="displayed"] .content-wrapper,
+section.user-card[data-edited="edited"] form {
+  box-sizing: border-box;
+  height: auto;
+}
+
+section.user-card[data-edited="displayed"] form {
+  padding: 0 20px;
+}
+
+section.user-card[data-edited="edited"] form {
+  padding: 20px;
+  font-size: 14px;
+}

@@ -1,0 +1,55 @@
+.form-wrapper[data-visibility="button"] {
+}
+
+.form-wrapper[data-visibility="button"] form {
+  display: none;
+  visibility: hidden;
+}
+
+.button.form-caller {
+  display: block;
+  width: fit-content;
+  margin: 40px auto;
+}
+
+.form-wrapper[data-visibility="button"] .button.form-caller {
+  border-radius: 40px;
+  cursor: default;
+  padding: 0 20px !important;
+  line-height: 45px;
+  height: 50px;
+}
+
+.form-wrapper[data-visibility="form"] {
+  position: fixed;
+  box-sizing: border-box;
+  padding: 30px 20px 20px;
+  top: 10%;
+  left: 50%;
+  width: 300px;
+  margin: 0 -150px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(5px);
+  border: 1px solid #eee;
+  box-shadow: 0 5px 25px rgba(0,0,0,.25);
+  text-align: left;
+  z-index: 99;
+}
+
+.form-wrapper[data-visibility="form"] .button.form-caller {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  font-size: 0;
+  margin: 0;
+  border: none;
+  height: 20px;
+  width: 40px;
+  background: #E80000 url(/i/close.svg) no-repeat center center;
+  background-size: 30%;
+}
+
+label[data-width="full"] input {
+  width: 100%;
+}

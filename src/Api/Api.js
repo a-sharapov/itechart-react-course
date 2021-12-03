@@ -1,5 +1,3 @@
-'use strict'
-
 export class Api {
   static getUsers(options) {
     Object.assign(this, {
@@ -14,9 +12,21 @@ export class Api {
       throw error
     }
   }
+  static getUserByID(options) {
+    Object.assign(this, {
+      url: "//jsonplaceholder.typicode.com/users/",
+    }, options)
+    try {
+      const response = fetch(this.url + this.append)
+        .then(response => response.json())
+      return response
+    } catch (error) {
+      throw error
+    }
+  }
   static putUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/posts/1",
+      url: "//jsonplaceholder.typicode.com/users/",
       method: "PUT"
     }, options)
     try {
@@ -33,7 +43,7 @@ export class Api {
   }
   static editUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/posts/1",
+      url: "//jsonplaceholder.typicode.com/users/",
       method: "PATCH"
     }, options)
     try {
@@ -50,7 +60,7 @@ export class Api {
   }
   static deleteUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/posts/1",
+      url: "//jsonplaceholder.typicode.com/users/",
       method: "DELETE"
     }, options)
     try {

@@ -1,0 +1,18 @@
+a.link-to-cards {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 70px;
+  line-height: 70px;
+  margin: -35px -75px;
+  font-weight: bold;
+  border: 1px dotted #ccc;
+}
+
+a.link-to-cards:hover {
+  border-color: transparent;
+  border-top: 1px solid #fff;
+  background: rgba(255,255,255,.5);
+  box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
