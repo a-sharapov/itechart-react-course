@@ -16,8 +16,7 @@ section.user-card {
 }
 
 article.user-card-wrapper:hover section.user-card {
-  filter: blur(.1px);
-  transform: scale(.97);
+  filter: blur(.5px);
   opacity: .9;
 }
 
@@ -36,27 +35,27 @@ section.user-card .user-name-wrapper {
   text-shadow: 0 1px 0 rgba(0,0,0,.2);
 }
 
-section.user-card:nth-child(2n) {
+article > section.user-card:nth-child(2n) {
   border-top-color: #3a7fb8;
 }
 
-section.user-card:nth-child(2n) .user-name-wrapper {
+article > section.user-card:nth-child(2n) .user-name-wrapper {
   background: #3a7fb8;
 }
 
-section.user-card:nth-child(3n) {
+article > section.user-card:nth-child(3n) {
   border-top-color: #b83a7f;
 }
 
-section.user-card:nth-child(3n) .user-name-wrapper {
+article > section.user-card:nth-child(3n) .user-name-wrapper {
   background: #b83a7f;
 }
 
-section.user-card:nth-child(4n) {
+article > section.user-card:nth-child(4n) {
   border-top-color: #b8903a;
 }
 
-section.user-card:nth-child(4n) .user-name-wrapper {
+article > section.user-card:nth-child(4n) .user-name-wrapper {
   background: #b8903a;
 }
 
@@ -168,4 +167,21 @@ section.user-card[data-edited="displayed"] form {
 section.user-card[data-edited="edited"] form {
   padding: 20px;
   font-size: 14px;
+}
+
+a.link-to-card {
+  display: block;
+  width: 100%;
+  line-height: 50px;
+  height: 50px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background: #efefef;
+}
+
+a.link-to-card:hover {
+  font-size: 16px;
 }

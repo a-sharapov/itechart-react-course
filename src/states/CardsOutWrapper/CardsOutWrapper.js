@@ -6,20 +6,29 @@ import React, {
 
 import './CardsOutWrapper.css'
 
-import { CardTpl } from '../../components/CardTpl'
-import { CardCreationForm } from '../CardCreationForm'
+import { 
+  CardTpl 
+} from '../../components/CardTpl'
+import { 
+  CardCreationForm 
+} from '../CardCreationForm'
+import {
+  Tabs
+} from '../../components/Tabs'
 
-import { Api } from '../../Api/Api'
+import { Api } from '../../api/Api'
 
 export const CardsOutWrapper = (props) => {
   const [userCards, setUserCards] = useState([])
 
   useEffect(() => {
+    let isMounted = true
     Api.getUsers().then(newUserCards => {
+        if (isMounted) {
         let nUC = newUserCards.map(newCard => {
           let nCa = []
           for (const [k, v] of Object.entries(newCard.address)) {
-            (k !== "geo") ? nCa.push(k.toString().toUpperCase() + ": " + v): void - 1
+            (k !== "geo") ? nCa.push(k.toString().toUpperCase() + ": " + v): void -1
           }
           return {
             id: newCard.id,
@@ -28,11 +37,16 @@ export const CardsOutWrapper = (props) => {
           }
         })
         setUserCards(nUC)
+        }
       })
+
+      return () => {
+        isMounted = false
+      }
   }, [])
   
   const addUserCard = (name, description) => {
-    Api.putUser().then(
+    Api.putUser({append: ""}).then(
       setUserCards(userCards.concat([{
         id: Date.now(),
         name,
@@ -58,16 +72,16 @@ export const CardsOutWrapper = (props) => {
       )
     )
   }
-
-  return(
+  
+  return (
       <Fragment>
-            <article className="user-card-wrapper">
-            {userCards.length ? userCards.map((userCard) => {
-              return <CardTpl key={userCard.id} userCard={userCard} onRemove={removeUserCard} onEdit={editUserCard} />
-            }) : <p className="light">Has no items to display here...</p>}
-            </article> 
-            <CardCreationForm onCreate={addUserCard} />
+        <Tabs removeMain={true} tabs={userCards} />
+        <article className="user-card-wrapper">
+        {userCards.length ? userCards.map((userCard) => { 
+          return <CardTpl key={userCard.id} userCard={userCard} onRemove={removeUserCard} onEdit={editUserCard} /> 
+        }) : <p className="light">Has no items to display here...</p>}
+        </article> 
+        <CardCreationForm onCreate={addUserCard} />
       </Fragment>
   )
-
 }

@@ -14,14 +14,17 @@ import {
 } from '../../states/CardsOutWrapper'
 
 export const Cards = () => {
+  const headerContent = "iTechArt-React-Course",
+        footerContent = "iTechArt"
+
   return (
     <Fragment>
       <aside>
-        <Link to="/" className="link-to-main" replace>&#11180;&nbsp;Back to Main</Link>
+        <Link to="/" className="link-to-main slabbed" replace>&#11180;&nbsp;Back to Main</Link>
       </aside>
-      <Header content={"iTechArt-React-Course"} />
-      <CardsOutWrapper />
-      <Footer content={"iTechArt"} />
+      <Header content={headerContent} />
+      <CardsOutWrapper/>
+      <Footer content={footerContent} />
     </Fragment>
   )
 }

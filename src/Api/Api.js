@@ -26,7 +26,7 @@ export class Api {
   }
   static putUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/users/",
+      url: "//jsonplaceholder.typicode.com/posts/1",
       method: "PUT"
     }, options)
     try {
@@ -43,7 +43,7 @@ export class Api {
   }
   static editUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/users/",
+      url: "//jsonplaceholder.typicode.com/posts/1",
       method: "PATCH"
     }, options)
     try {
@@ -60,7 +60,7 @@ export class Api {
   }
   static deleteUser(options) {
     Object.assign(this, {
-      url: "//jsonplaceholder.typicode.com/users/",
+      url: "//jsonplaceholder.typicode.com/posts/1",
       method: "DELETE"
     }, options)
     try {

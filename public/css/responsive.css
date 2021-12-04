@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+@media screen and (max-width: 768px) {
+  nav[data-role="navigation-tabs"] {
+    height: auto !important;
+  }
+}
 @media screen and (max-width: 425px) {
-
+  a.link-to-main {
+    width: 100% !important;
+  }
 }

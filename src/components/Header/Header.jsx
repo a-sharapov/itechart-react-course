@@ -9,5 +9,5 @@ export const Header = ({content}) => {
         <h1 className="page-header">{content}</h1>
       </header>
     </Fragment>
-  );
+  )
 }

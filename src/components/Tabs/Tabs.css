@@ -1,0 +1,46 @@
+nav[data-role="navigation-tabs"] {
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  margin: 0 0 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid #aaa;
+}
+
+nav[data-role="navigation-tabs"]:empty {
+  display: none;
+  visibility: hidden;
+}
+
+nav[data-role="navigation-tabs"] a.nav-link {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: -1px 5px 0;
+  color: #aaa;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  line-height: 40px;
+  vertical-align: bottom;
+}
+
+nav[data-role="navigation-tabs"] a.nav-link[href="/cards/"] {
+  font-weight: bold;
+  color: #555;
+}
+
+nav[data-role="navigation-tabs"] a.nav-link:hover {
+  background: rgba(255,255,255,.2);
+  color: #333;
+  border-bottom-color: #333;
+}
+
+nav[data-role="navigation-tabs"] a.nav-link.active {
+  background: linear-gradient(to top, #dad0ec, transparent 10%, transparent);
+  color: #673ab8;
+  border-bottom-color: #673ab8;
+  border-radius: 2px 2px 0 0;
+  font-weight: bold;
+}

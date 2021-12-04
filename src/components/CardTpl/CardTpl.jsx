@@ -2,30 +2,55 @@ import React, {
   Fragment,
   useState
 } from 'react'
+import { Link } from 'react-router-dom'
 
 import './CardTpl.css'
 
+function useFormInput(defaultName) {
+  const [userName, setUserName] = useState(defaultName)
+
+  return {
+    value: userName,
+    onChange: event => setUserName(event.target.value)
+  }
+}
+
+function useFormTextarea(defaultDescription) {
+  const [userDescription, setUserDescription] = useState(defaultDescription)
+
+  return {
+    value: userDescription,
+    onChange: event => setUserDescription(event.target.value)
+  }
+}
+
+function useEditorForm(defaultState = "displayed") {
+  const [editorFormState, setEditorFormState] = useState(defaultState)
+
+  return {
+    changeCardView: () => {
+      (editorFormState === "displayed") ? setEditorFormState("edited") : setEditorFormState("displayed")
+    },
+    value: () => {
+      return editorFormState
+    }
+  }
+}
+ 
 export const CardTpl = ({
   userCard,
   onRemove,
-  onEdit
+  onEdit,
+  hideMore
 }) => {
-  const [edited, setEdited] = useState("displayed")
-  const [name, setName] = useState(userCard.name)
-  const [description, setDescription] = useState(userCard.description)
-
-  const editorHandler = (currentState) => {
-    if (currentState === "edited") {
-      setEdited("displayed")
-    } else {
-      setEdited("edited")
-    }
-  }
+  const textAreaAttrs = useFormTextarea(userCard.description)
+  const inputAttrs = useFormInput(userCard.name)
+  const cardState = useEditorForm()
 
   const submitHandler = (event) => {
     event.preventDefault()
-    onEdit(userCard.id, name, description)
-    setEdited("displayed")
+    onEdit(userCard.id, inputAttrs.value, textAreaAttrs.value)
+    cardState.changeCardView()
   }
 
   const tryToRemove = (id) => {
@@ -34,33 +59,32 @@ export const CardTpl = ({
 
   return (
             <Fragment>
-              <section className="user-card" data-edited={edited.toString()}>
+              <section className="user-card" data-edited={cardState.value().toString()}>
                 <div className="content-wrapper">
-                  <span className="modifier" data-modify="remove" title="Remove" onClick={()=>
-                    tryToRemove(userCard.id)}></span>
-                  <span className="modifier" data-modify="edit" title="Edit" onClick={()=>
-                    editorHandler(edited.toString())}></span>
+                  <span className="modifier" data-modify="remove" title="Remove" onClick={()=> tryToRemove(userCard.id)} />
+                  <span className="modifier" data-modify="edit" title="Edit" onClick={cardState.changeCardView} />
                   <div className="user-name-wrapper">
                     <h3>{userCard.name}</h3>
                   </div>
                   <div className="user-description-wrapper">
                     <p>{userCard.description}</p>
                   </div>
+                  {!hideMore? <Link to={"/cards/" + userCard.id} className="link-to-card" replace>&#129094;&nbsp;Go to card</Link> : void -1}
                 </div>
                 <form className="user-card-editor" method="PATCH" onSubmit={submitHandler}>
                   <h3>Edit this card</h3>
                   <input type="hidden" name="id" value={userCard.id} />
                   <label data-width="full">
-                    <input type="text" required name="name" placeholder="Person name" value={name} onChange={(event)=> setName(event.target.value)} />
+                    <input type="text" required name="name" placeholder="Person name" {...inputAttrs} />
                   </label><label data-width="full">
-                    <textarea required name="description" placeholder="Person description" value={description} rows="5" onChange={(event)=> setDescription(event.target.value)}></textarea>
-                  </label><label data-width="half">
+                    <textarea required name="description" placeholder="Person description" rows="5" {...textAreaAttrs}></textarea>
+                  </label><label data-width="half" data-align="left">
                     <button type="submit" className="dedicated">Update</button>
                   </label><label data-width="half" data-align="right">
-                    <button onClick={()=> editorHandler(edited.toString())}>Back</button>
+                    <span className="button" onClick={cardState.changeCardView}>Back</span>
                   </label>
                 </form>
               </section>
             </Fragment>
-  );
+  )
 }

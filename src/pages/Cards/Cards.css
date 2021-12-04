@@ -4,17 +4,28 @@ article.user-card-wrapper {
   max-width: 1400px;
 }
 
-.link-to-main {
+a.link-to-main {
   position: fixed;
   top: 0;
   left: 0;
   display: block;
   box-sizing: border-box;
   width: auto;
-  padding: 0 20px;
+  padding: 0 25px;
+  font-size: 18px;
   height: 70px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
   text-align: center;
   line-height: 70px;
   font-weight: bold;
-  background: rgba(255,255,255,.7)
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 7px rgba(0,0,0,.2);
+  z-index: 100;
+}
+
+a.link-to-main:hover {
+  background: #fff;
 }

@@ -1,0 +1,35 @@
+header+section.user-card {
+  width: 80%;
+  min-width: 300px;
+  max-width: 1000px;
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+header+section.user-card .user-name-wrapper {
+  height: auto;
+  padding: 15px 20px 0;
+}
+
+header+section.user-card .user-name-wrapper h3 {
+  position: relative;
+  font-size: 30px;
+  line-height: 70px;
+}
+
+header+section.user-card .user-name-wrapper:empty:before,
+header+section.user-card .user-description-wrapper:empty:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  background: url(/i/loading.svg) no-repeat center center;
+  background-size: contain;
+}
+
+header+section.user-card .user-name-wrapper:empty:before {
+  margin: -20px auto 0;
+  filter: brightness(1000);
+}

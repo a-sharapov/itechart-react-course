@@ -10,5 +10,5 @@ export const Footer = ({content}) => {
     <Fragment>
       <footer>{cYear}&nbsp;&copy;&nbsp;{content}</footer>
     </Fragment>
-  );
+  )
 }
